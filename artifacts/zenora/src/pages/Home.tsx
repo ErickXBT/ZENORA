@@ -63,10 +63,11 @@ export default function Home() {
           </main>
         </div>
 
-        <Footer />
       </div>
 
       <Roadmap />
+
+      <Footer />
 
       <style>{`
         .custom-scrollbar::-webkit-scrollbar {

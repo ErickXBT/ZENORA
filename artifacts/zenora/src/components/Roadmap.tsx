@@ -8,6 +8,8 @@ const phases = [
     title: "Genesis",
     period: "Q1 2025",
     status: "completed",
+    dot: "#00ff88",
+    label: "COMPLETE",
     items: [
       "ZENORA Platform Launch",
       "Retro Game Catalog (500+ games)",
@@ -20,6 +22,8 @@ const phases = [
     title: "Token Launch",
     period: "Q2 2025",
     status: "active",
+    dot: NEON_PINK,
+    label: "IN PROGRESS",
     items: [
       "ZEN Token Generation Event",
       "Wallet Integration (MetaMask, Trust)",
@@ -32,6 +36,8 @@ const phases = [
     title: "Play to Earn",
     period: "Q3 2025",
     status: "upcoming",
+    dot: "#4b5563",
+    label: "UPCOMING",
     items: [
       "P2E Mechanics Live",
       "Daily Quest Rewards",
@@ -44,6 +50,8 @@ const phases = [
     title: "Ecosystem",
     period: "Q4 2025",
     status: "upcoming",
+    dot: "#4b5563",
+    label: "UPCOMING",
     items: [
       "ZENORA DAO Governance",
       "Community Game Submissions",
@@ -53,42 +61,34 @@ const phases = [
   },
 ];
 
-const statusColors: Record<string, { dot: string; badge: string; label: string }> = {
-  completed: {
-    dot: "#00ff88",
-    badge: "rgba(0,255,136,0.12)",
-    label: "COMPLETE",
-  },
-  active: {
-    dot: NEON_PINK,
-    badge: `${NEON_PINK}18`,
-    label: "IN PROGRESS",
-  },
-  upcoming: {
-    dot: "#3f3f46",
-    badge: "rgba(63,63,70,0.3)",
-    label: "UPCOMING",
-  },
-};
-
 export function Roadmap() {
   return (
-    <section id="roadmap" className="w-full bg-black py-20 px-4 md:px-8">
-      <div className="max-w-6xl mx-auto">
+    <section id="roadmap" className="w-full bg-black py-20 px-4 md:px-10">
+      <div className="max-w-7xl mx-auto">
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="text-center mb-14"
         >
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="h-px flex-1 max-w-[80px]" style={{ background: `linear-gradient(to right, transparent, ${NEON_PINK})` }} />
-            <span className="font-pixel text-[10px] tracking-widest" style={{ color: NEON_PINK }}>
+          <div className="flex items-center justify-center gap-3 mb-5">
+            <div
+              className="h-px flex-1 max-w-[80px]"
+              style={{ background: `linear-gradient(to right, transparent, ${NEON_PINK})` }}
+            />
+            <span
+              className="font-pixel text-[10px] tracking-widest"
+              style={{ color: NEON_PINK }}
+            >
               ZENORA GAMEFI
             </span>
-            <div className="h-px flex-1 max-w-[80px]" style={{ background: `linear-gradient(to left, transparent, ${NEON_PINK})` }} />
+            <div
+              className="h-px flex-1 max-w-[80px]"
+              style={{ background: `linear-gradient(to left, transparent, ${NEON_PINK})` }}
+            />
           </div>
           <h2
             className="font-pixel text-3xl md:text-4xl mb-4"
@@ -104,133 +104,185 @@ export function Roadmap() {
           </p>
         </motion.div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Center spine line */}
-          <div
-            className="absolute left-1/2 top-0 bottom-0 w-px hidden md:block"
-            style={{ background: `linear-gradient(to bottom, ${NEON_PINK}66, transparent)` }}
-          />
-
-          <div className="flex flex-col gap-8">
-            {phases.map((phase, i) => {
-              const sc = statusColors[phase.status];
-              const isLeft = i % 2 === 0;
-
-              return (
-                <motion.div
-                  key={phase.phase}
-                  initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.12 }}
-                  className={`relative flex flex-col md:flex-row ${isLeft ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-0 md:gap-0`}
-                >
-                  {/* Card */}
-                  <div className="w-full md:w-[calc(50%-32px)]">
-                    <div
-                      className="border p-6 relative"
-                      style={{
-                        borderColor: sc.dot,
-                        background: sc.badge,
-                        boxShadow: phase.status === "active"
-                          ? `0 0 20px ${sc.dot}33, inset 0 0 20px ${sc.dot}0a`
-                          : "none",
-                      }}
-                    >
-                      {/* Phase label + badge */}
-                      <div className="flex items-center justify-between mb-3">
-                        <span
-                          className="font-pixel text-[9px] tracking-widest"
-                          style={{ color: sc.dot }}
-                        >
-                          {phase.phase}
-                        </span>
-                        <span
-                          className="font-pixel text-[8px] px-2 py-0.5"
-                          style={{
-                            color: sc.dot,
-                            border: `1px solid ${sc.dot}66`,
-                            background: `${sc.dot}15`,
-                          }}
-                        >
-                          {sc.label}
-                        </span>
-                      </div>
-
-                      <h3
-                        className="font-pixel text-lg mb-1"
-                        style={{ color: "#f4f4f4" }}
-                      >
-                        {phase.title}
-                      </h3>
-                      <p
-                        className="font-pixel text-[9px] mb-5 tracking-wider"
-                        style={{ color: sc.dot }}
-                      >
-                        {phase.period}
-                      </p>
-
-                      <ul className="flex flex-col gap-2">
-                        {phase.items.map((item) => (
-                          <li
-                            key={item}
-                            className="flex items-start gap-2 font-sans text-sm text-zinc-400"
-                          >
-                            <span
-                              className="w-1.5 h-1.5 flex-shrink-0 mt-1.5"
-                              style={{ background: sc.dot }}
-                            />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* Center dot connector */}
-                  <div className="hidden md:flex w-16 justify-center items-center flex-shrink-0 relative">
-                    <div
-                      className="w-4 h-4 z-10"
-                      style={{
-                        background: sc.dot,
-                        boxShadow: `0 0 10px ${sc.dot}, 0 0 20px ${sc.dot}66`,
-                      }}
-                    />
-                  </div>
-
-                  {/* Spacer for opposite side */}
-                  <div className="hidden md:block w-[calc(50%-32px)]" />
-                </motion.div>
-              );
-            })}
-          </div>
+        {/* Progress connector bar */}
+        <div className="hidden md:flex items-center justify-center mb-2 px-[calc(12.5%+32px)]">
+          {phases.map((phase, i) => (
+            <div key={phase.phase} className="flex items-center flex-1">
+              <div
+                className="w-5 h-5 flex-shrink-0 z-10"
+                style={{
+                  background: phase.dot,
+                  boxShadow: `0 0 8px ${phase.dot}`,
+                  clipPath: "polygon(0 4px,4px 4px,4px 0,calc(100% - 4px) 0,calc(100% - 4px) 4px,100% 4px,100% calc(100% - 4px),calc(100% - 4px) calc(100% - 4px),calc(100% - 4px) 100%,4px 100%,4px calc(100% - 4px),0 calc(100% - 4px))",
+                }}
+              />
+              {i < phases.length - 1 && (
+                <div
+                  className="flex-1 h-px"
+                  style={{
+                    background: i < 1
+                      ? `linear-gradient(to right, #00ff88, ${NEON_PINK})`
+                      : "rgba(75,85,99,0.5)",
+                  }}
+                />
+              )}
+            </div>
+          ))}
         </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+        {/* 4 Horizontal Glass Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+          {phases.map((phase, i) => {
+            const isActive = phase.status === "active";
+            const isCompleted = phase.status === "completed";
+
+            return (
+              <motion.div
+                key={phase.phase}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="relative flex flex-col h-full"
+                style={{
+                  background: isActive
+                    ? `linear-gradient(135deg, rgba(255,0,170,0.08), rgba(0,0,0,0.6))`
+                    : isCompleted
+                    ? "linear-gradient(135deg, rgba(0,255,136,0.06), rgba(0,0,0,0.55))"
+                    : "rgba(255,255,255,0.02)",
+                  backdropFilter: "blur(16px)",
+                  WebkitBackdropFilter: "blur(16px)",
+                  border: `1px solid ${phase.dot}${isActive ? "88" : isCompleted ? "55" : "22"}`,
+                  boxShadow: isActive
+                    ? `0 0 24px ${NEON_PINK}22, inset 0 0 24px ${NEON_PINK}08`
+                    : isCompleted
+                    ? "0 0 16px rgba(0,255,136,0.1)"
+                    : "none",
+                }}
+              >
+                {/* Top accent strip */}
+                <div
+                  className="w-full h-1"
+                  style={{
+                    background: isActive
+                      ? `linear-gradient(to right, ${NEON_PINK}, ${NEON_PINK}44)`
+                      : isCompleted
+                      ? "linear-gradient(to right, #00ff88, #00ff8844)"
+                      : "rgba(75,85,99,0.3)",
+                  }}
+                />
+
+                <div className="p-6 flex flex-col flex-1">
+                  {/* Phase + Status badge */}
+                  <div className="flex items-center justify-between mb-4">
+                    <span
+                      className="font-pixel text-[9px] tracking-widest"
+                      style={{ color: phase.dot }}
+                    >
+                      {phase.phase}
+                    </span>
+                    <span
+                      className="font-pixel text-[7px] px-2 py-1 tracking-wider"
+                      style={{
+                        color: phase.dot,
+                        background: `${phase.dot}18`,
+                        border: `1px solid ${phase.dot}44`,
+                      }}
+                    >
+                      {phase.label}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h3
+                    className="font-pixel text-base mb-1 leading-snug"
+                    style={{ color: "#f4f4f4" }}
+                  >
+                    {phase.title}
+                  </h3>
+
+                  {/* Period */}
+                  <p
+                    className="font-pixel text-[9px] mb-5 tracking-wider"
+                    style={{ color: phase.dot }}
+                  >
+                    {phase.period}
+                  </p>
+
+                  {/* Divider */}
+                  <div
+                    className="w-full h-px mb-5"
+                    style={{ background: `${phase.dot}22` }}
+                  />
+
+                  {/* Items */}
+                  <ul className="flex flex-col gap-3 flex-1">
+                    {phase.items.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-2.5 font-sans text-sm"
+                        style={{
+                          color: isActive || isCompleted ? "#d4d4d8" : "#71717a",
+                        }}
+                      >
+                        <span
+                          className="w-1.5 h-1.5 flex-shrink-0 mt-1.5"
+                          style={{
+                            background: phase.dot,
+                            boxShadow: isActive || isCompleted
+                              ? `0 0 4px ${phase.dot}`
+                              : "none",
+                          }}
+                        />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Completed checkmark */}
+                  {isCompleted && (
+                    <div
+                      className="mt-5 flex items-center gap-2 font-pixel text-[9px]"
+                      style={{ color: "#00ff88" }}
+                    >
+                      <span>✓</span>
+                      <span>MILESTONE ACHIEVED</span>
+                    </div>
+                  )}
+
+                  {/* Active pulse indicator */}
+                  {isActive && (
+                    <div className="mt-5 flex items-center gap-2">
+                      <motion.div
+                        animate={{ opacity: [1, 0.3, 1] }}
+                        transition={{ repeat: Infinity, duration: 1.4 }}
+                        className="w-2 h-2"
+                        style={{ background: NEON_PINK, boxShadow: `0 0 6px ${NEON_PINK}` }}
+                      />
+                      <span
+                        className="font-pixel text-[8px]"
+                        style={{ color: NEON_PINK }}
+                      >
+                        LIVE NOW
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Bottom tagline */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 text-center"
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="font-pixel text-[10px] tracking-widest text-zinc-700 text-center mt-14"
         >
-          <p className="font-pixel text-[10px] tracking-widest text-zinc-600 mb-6">
-            — THE JOURNEY HAS JUST BEGUN —
-          </p>
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="font-pixel text-[10px] px-8 py-3 transition-all hover:scale-105 active:scale-95"
-            style={{
-              color: NEON_PINK,
-              border: `2px solid ${NEON_PINK}`,
-              background: `${NEON_PINK}15`,
-              boxShadow: `0 0 12px ${NEON_PINK}44`,
-            }}
-          >
-            BACK TO TOP
-          </button>
-        </motion.div>
+          — THE JOURNEY HAS JUST BEGUN —
+        </motion.p>
       </div>
     </section>
   );

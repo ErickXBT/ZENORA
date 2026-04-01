@@ -80,7 +80,7 @@ export function Hero() {
           }}
           data-testid="button-hero-play-now"
         >
-          PLAY NOW
+          CONNECT WALLET
         </button>
       </motion.nav>
 

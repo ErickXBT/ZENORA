@@ -21,7 +21,7 @@ export function Footer() {
       <div className="max-w-[1600px] mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           <div>
-            <div className="font-pixel text-3xl text-primary mb-3" style={{ textShadow: "0 0 16px #ffc600, 0 0 32px #ffc60066" }}>
+            <div className="font-pixel text-3xl text-primary mb-3" style={{ textShadow: "0 0 16px #ff00aa, 0 0 32px #ff00aa66" }}>
               ZENORA
             </div>
             <p className="font-pixel text-[10px] text-zinc-500 leading-6 mb-4">
@@ -71,8 +71,8 @@ export function Footer() {
                 key={i}
                 className="w-2 h-2"
                 style={{
-                  backgroundColor: i % 2 === 0 ? "#ffc600" : "#111",
-                  boxShadow: i % 2 === 0 ? "0 0 4px #ffc600" : "none",
+                  backgroundColor: i % 2 === 0 ? "#ff00aa" : "#111",
+                  boxShadow: i % 2 === 0 ? "0 0 4px #ff00aa" : "none",
                 }}
               />
             ))}

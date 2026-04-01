@@ -15,10 +15,10 @@ export function GameCard({ game }: { game: Game }) {
       className="group relative overflow-hidden flex-shrink-0 w-[180px] h-[208px] bg-zinc-900 transition-colors"
       style={{
         border: isHovered
-          ? "2px solid #ffc600"
+          ? "2px solid #ff00aa"
           : "2px solid #27272a",
         boxShadow: isHovered
-          ? "0 0 14px #ffc60055, 0 0 28px #ffc60022"
+          ? "0 0 14px #ff00aa55, 0 0 28px #ff00aa22"
           : "none",
       }}
       data-testid={`card-game-${game.id}`}
@@ -55,12 +55,12 @@ export function GameCard({ game }: { game: Game }) {
           className="absolute bottom-0 left-0 w-full h-[73px] border-t-2 transition-colors flex items-center justify-center text-center p-2"
           style={{
             background: isHovered ? "#1c1c1c" : "#111111",
-            borderColor: isHovered ? "#ffc600" : "#27272a",
+            borderColor: isHovered ? "#ff00aa" : "#27272a",
           }}
         >
           <span
             className="font-sans font-semibold text-xs leading-snug line-clamp-2 transition-colors"
-            style={{ color: isHovered ? "#ffc600" : "#e4e4e7" }}
+            style={{ color: isHovered ? "#ff00aa" : "#e4e4e7" }}
           >
             {game.title}
           </span>

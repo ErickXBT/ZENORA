@@ -15,7 +15,7 @@ export function GameCarousel({ title, games }: { title: string; games: Game[] })
         <h2 className="font-pixel text-base md:text-lg text-zinc-100 flex items-center gap-3">
           <span
             className="w-2.5 h-2.5 block flex-shrink-0"
-            style={{ background: "#ffc600", boxShadow: "0 0 6px #ffc600" }}
+            style={{ background: "#ff00aa", boxShadow: "0 0 6px #ff00aa" }}
           />
           {title}
         </h2>

@@ -45,11 +45,11 @@ export function Navbar({ onSearch }: NavbarProps) {
               <Gamepad2
                 size={20}
                 className="text-primary"
-                style={{ filter: "drop-shadow(0 0 6px #ffc600)" }}
+                style={{ filter: "drop-shadow(0 0 6px #ff00aa)" }}
               />
               <span
                 className="font-pixel text-lg text-primary"
-                style={{ textShadow: "0 0 10px #ffc600, 0 0 20px #ffc60055" }}
+                style={{ textShadow: "0 0 10px #ff00aa, 0 0 20px #ff00aa55" }}
               >
                 ZENORA
               </span>

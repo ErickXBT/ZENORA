@@ -59,7 +59,7 @@
   --popover-foreground: 0 0% 93%;
   --popover-border: 0 0% 20%;
   
-  --primary: 46 100% 50%; /* #ffc600 */
+  --primary: 316 100% 53%; /* #ff00aa neon pink */
   --primary-foreground: 0 0% 0%;
   
   --secondary: 339 82% 51%; /* #e91e63 Neon Pink */
@@ -75,7 +75,7 @@
   --destructive-foreground: 0 0% 100%;
   
   --input: 0 0% 20%;
-  --ring: 46 100% 50%;
+  --ring: 316 100% 53%;
   
   --app-font-sans: 'Chakra Petch', sans-serif;
   --app-font-pixel: 'Press Start 2P', cursive;

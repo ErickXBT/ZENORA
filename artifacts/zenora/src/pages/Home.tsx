@@ -5,6 +5,7 @@ import { Sidebar } from "@/components/Sidebar";
 import { GameCarousel } from "@/components/GameCarousel";
 import { GameCard } from "@/components/GameCard";
 import { Footer } from "@/components/Footer";
+import { Roadmap } from "@/components/Roadmap";
 import { gamesData, allGames } from "@/data/games";
 
 export default function Home() {
@@ -23,8 +24,7 @@ export default function Home() {
 
       <div
         id="catalog"
-        className="bg-black text-white relative z-10 border-t-4"
-        style={{ borderColor: "#ffc600" }}
+        className="bg-black text-white relative z-10 border-t-4 border-primary"
       >
         <Navbar onSearch={setSearchQuery} />
 
@@ -66,6 +66,8 @@ export default function Home() {
         <Footer />
       </div>
 
+      <Roadmap />
+
       <style>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 6px;
@@ -78,7 +80,7 @@ export default function Home() {
           background: #3f3f46;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #ffc600;
+          background: #ff00aa;
         }
       `}</style>
     </div>

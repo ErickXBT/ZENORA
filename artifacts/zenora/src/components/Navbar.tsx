@@ -1,52 +1,117 @@
-import { Link } from "wouter";
-import { Search, Menu } from "lucide-react";
 import { useState } from "react";
+import { Search, Menu, X, Gamepad2 } from "lucide-react";
 
-export function Navbar({ onSearch }: { onSearch: (q: string) => void }) {
+interface NavbarProps {
+  onSearch: (q: string) => void;
+}
+
+export function Navbar({ onSearch }: NavbarProps) {
   const [query, setQuery] = useState("");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSearch(query);
-  };
+  const navLinks = [
+    { label: "New", href: "#new-games" },
+    { label: "Action", href: "#action-games" },
+    { label: "Puzzle", href: "#puzzle-games" },
+    { label: "Adventure", href: "#adventure-games" },
+    { label: "Racing", href: "#racing-games" },
+    { label: "Shooting", href: "#shooting-games" },
+    { label: "Fighting", href: "#fighting-games" },
+    { label: "Arcade", href: "#arcade-games" },
+    { label: "Retro", href: "#retro-games" },
+    { label: "Sports", href: "#sports-games" },
+    { label: "2 Player", href: "#two-player-games" },
+    { label: "Multiplayer", href: "#multiplayer-games" },
+  ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-zinc-950/90 backdrop-blur-md border-b-2 border-zinc-800 h-16 flex items-center px-4 md:px-6">
-      <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
-        <div className="flex items-center gap-4">
-          <button className="md:hidden text-zinc-400 hover:text-primary transition-colors">
-            <Menu size={24} />
-          </button>
-          <Link href="/" className="flex items-center gap-2">
-            <span className="font-pixel text-xl text-primary text-glow cursor-pointer hover:text-white transition-colors">
-              ZENORA
-            </span>
-          </Link>
+    <>
+      <header
+        className="sticky top-0 z-50 w-full border-b-2 border-zinc-800"
+        style={{ background: "rgba(5,5,5,0.97)", backdropFilter: "blur(12px)" }}
+      >
+        <div className="flex items-center justify-between w-full px-4 md:px-6 h-14">
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <button
+              className="lg:hidden text-zinc-400 hover:text-primary transition-colors"
+              onClick={() => setMobileMenuOpen((v) => !v)}
+              data-testid="button-mobile-menu"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+
+            <a href="/" className="flex items-center gap-2 group" data-testid="link-home">
+              <Gamepad2
+                size={20}
+                className="text-primary"
+                style={{ filter: "drop-shadow(0 0 6px #ffc600)" }}
+              />
+              <span
+                className="font-pixel text-lg text-primary"
+                style={{ textShadow: "0 0 10px #ffc600, 0 0 20px #ffc60055" }}
+              >
+                ZENORA
+              </span>
+            </a>
+          </div>
+
+          <nav className="hidden lg:flex items-center gap-0 overflow-x-auto">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="px-3 py-1 text-xs font-sans font-bold text-zinc-400 hover:text-primary hover:bg-primary/10 transition-colors whitespace-nowrap"
+                data-testid={`link-nav-${link.label.toLowerCase().replace(" ", "-")}`}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              onSearch(query);
+            }}
+            className="relative flex items-center flex-shrink-0"
+          >
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                onSearch(e.target.value);
+              }}
+              placeholder="Search games..."
+              className="w-28 md:w-52 bg-zinc-900 border border-zinc-700 text-zinc-100 px-3 py-1.5 text-xs font-sans focus:outline-none focus:border-primary transition-all placeholder:text-zinc-600"
+              data-testid="input-search"
+            />
+            <button
+              type="submit"
+              className="absolute right-2.5 text-zinc-500 hover:text-primary transition-colors"
+              data-testid="button-search-submit"
+            >
+              <Search size={14} />
+            </button>
+          </form>
         </div>
 
-        <nav className="hidden lg:flex items-center gap-6">
-          <Link href="#new-games" className="text-sm font-sans font-bold text-zinc-300 hover:text-primary transition-colors">New</Link>
-          <Link href="#action-games" className="text-sm font-sans font-bold text-zinc-300 hover:text-accent transition-colors">Action</Link>
-          <Link href="#puzzle-games" className="text-sm font-sans font-bold text-zinc-300 hover:text-secondary transition-colors">Puzzle</Link>
-          <Link href="#racing-games" className="text-sm font-sans font-bold text-zinc-300 hover:text-primary transition-colors">Racing</Link>
-        </nav>
-
-        <form onSubmit={handleSearch} className="relative flex items-center">
-          <input
-            type="search"
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              onSearch(e.target.value);
-            }}
-            placeholder="Find games..."
-            className="w-32 md:w-64 bg-zinc-900 border-2 border-zinc-800 text-zinc-100 px-4 py-2 text-sm font-sans focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all pixel-corners placeholder:text-zinc-600"
-          />
-          <button type="submit" className="absolute right-3 text-zinc-500 hover:text-primary transition-colors">
-            <Search size={16} />
-          </button>
-        </form>
-      </div>
-    </header>
+        {mobileMenuOpen && (
+          <div className="lg:hidden border-t border-zinc-800 bg-black px-4 py-4 grid grid-cols-3 gap-2">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-xs font-sans font-bold text-zinc-400 hover:text-primary py-2 px-2 hover:bg-zinc-900 transition-colors text-center"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        )}
+      </header>
+    </>
   );
 }

@@ -6,6 +6,7 @@ import { GameCarousel } from "@/components/GameCarousel";
 import { GameCard } from "@/components/GameCard";
 import { Footer } from "@/components/Footer";
 import { Roadmap } from "@/components/Roadmap";
+import { Tokenomics } from "@/components/Tokenomics";
 import { gamesData, allGames } from "@/data/games";
 
 export default function Home() {
@@ -64,6 +65,8 @@ export default function Home() {
         </div>
 
       </div>
+
+      <Tokenomics />
 
       <Roadmap />
 

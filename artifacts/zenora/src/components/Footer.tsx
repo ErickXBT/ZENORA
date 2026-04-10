@@ -21,8 +21,16 @@ export function Footer() {
       <div className="max-w-[1600px] mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           <div>
-            <div className="font-pixel text-3xl text-primary mb-3" style={{ textShadow: "0 0 16px #ff00aa, 0 0 32px #ff00aa66" }}>
-              ZENORA
+            <div className="flex items-center gap-3 mb-3">
+              <img
+                src="https://i.imgur.com/uRFXGQy.png"
+                alt="ZENORA logo"
+                className="w-10 h-10 object-contain"
+                style={{ filter: "drop-shadow(0 0 8px #ff00aa)" }}
+              />
+              <span className="font-pixel text-3xl text-primary" style={{ textShadow: "0 0 16px #ff00aa, 0 0 32px #ff00aa66" }}>
+                ZENORA
+              </span>
             </div>
             <p className="font-pixel text-[10px] text-zinc-500 leading-6 mb-4">
               OWN YOUR CHILDHOOD

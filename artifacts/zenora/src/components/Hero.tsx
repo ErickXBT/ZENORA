@@ -39,6 +39,12 @@ export function Hero() {
           className="flex items-center gap-2 group"
           data-testid="link-hero-home"
         >
+          <img
+            src="https://i.imgur.com/uRFXGQy.png"
+            alt="ZENORA logo"
+            className="w-8 h-8 object-contain"
+            style={{ filter: `drop-shadow(0 0 6px ${NEON_PINK})` }}
+          />
           <span
             className="font-pixel text-xl md:text-2xl"
             style={{

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, Menu, X, Gamepad2 } from "lucide-react";
+import { Search, Menu, X } from "lucide-react";
 
 interface NavbarProps {
   onSearch: (q: string) => void;
@@ -42,9 +42,10 @@ export function Navbar({ onSearch }: NavbarProps) {
             </button>
 
             <a href="/" className="flex items-center gap-2 group" data-testid="link-home">
-              <Gamepad2
-                size={20}
-                className="text-primary"
+              <img
+                src="https://i.imgur.com/uRFXGQy.png"
+                alt="ZENORA logo"
+                className="w-7 h-7 object-contain"
                 style={{ filter: "drop-shadow(0 0 6px #ff00aa)" }}
               />
               <span

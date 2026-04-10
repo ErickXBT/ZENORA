@@ -6,7 +6,7 @@ const phases = [
   {
     phase: "PHASE 1",
     title: "Genesis",
-    period: "Q1 2025",
+    period: "Q1 2026",
     status: "completed",
     dot: "#00ff88",
     label: "COMPLETE",
@@ -20,7 +20,7 @@ const phases = [
   {
     phase: "PHASE 2",
     title: "Token Launch",
-    period: "Q2 2025",
+    period: "Q2 2026",
     status: "active",
     dot: NEON_PINK,
     label: "IN PROGRESS",
@@ -34,7 +34,7 @@ const phases = [
   {
     phase: "PHASE 3",
     title: "Play to Earn",
-    period: "Q3 2025",
+    period: "Q3 2026",
     status: "upcoming",
     dot: "#4b5563",
     label: "UPCOMING",
@@ -48,7 +48,7 @@ const phases = [
   {
     phase: "PHASE 4",
     title: "Ecosystem",
-    period: "Q4 2025",
+    period: "Q4 2026",
     status: "upcoming",
     dot: "#4b5563",
     label: "UPCOMING",

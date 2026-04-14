@@ -8,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import { Roadmap } from "@/components/Roadmap";
 import { Tokenomics } from "@/components/Tokenomics";
 import { GameSection } from "@/components/GameSection";
+import { DungeonSection } from "@/components/DungeonSection";
 import { gamesData, allGames } from "@/data/games";
 
 export default function Home() {
@@ -25,6 +26,8 @@ export default function Home() {
       <Hero />
 
       <GameSection />
+
+      <DungeonSection />
 
       <div
         id="catalog"

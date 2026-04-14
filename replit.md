@@ -20,20 +20,39 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 
 ```text
 artifacts-monorepo/
-├── artifacts/              # Deployable applications
-│   └── api-server/         # Express API server
+├── artifacts/
+│   ├── api-server/         # Express API server (port 8080)
+│   ├── mockup-sandbox/     # Vite component preview server (port 8081)
+│   └── zenora/             # ZENORA GameFi React/Vite site (port 3000)
+│       ├── public/
+│       │   └── game.html   # Self-contained Alien Abduction arcade game
+│       └── src/
+│           ├── components/
+│           │   ├── Hero.tsx
+│           │   ├── Navbar.tsx
+│           │   ├── Sidebar.tsx
+│           │   ├── GameSection.tsx   # Arcade game iframe section
+│           │   ├── GameCarousel.tsx
+│           │   ├── GameCard.tsx
+│           │   ├── Tokenomics.tsx
+│           │   ├── Roadmap.tsx
+│           │   └── Footer.tsx
+│           └── pages/Home.tsx
 ├── lib/                    # Shared libraries
-│   ├── api-spec/           # OpenAPI spec + Orval codegen config
-│   ├── api-client-react/   # Generated React Query hooks
-│   ├── api-zod/            # Generated Zod schemas from OpenAPI
-│   └── db/                 # Drizzle ORM schema + DB connection
-├── scripts/                # Utility scripts (single workspace package)
-│   └── src/                # Individual .ts scripts, run via `pnpm --filter @workspace/scripts run <script>`
-├── pnpm-workspace.yaml     # pnpm workspace (artifacts/*, lib/*, lib/integrations/*, scripts)
-├── tsconfig.base.json      # Shared TS options (composite, bundler resolution, es2022)
-├── tsconfig.json           # Root TS project references
-└── package.json            # Root package with hoisted devDeps
+├── scripts/                # Utility scripts
+├── pnpm-workspace.yaml
+├── tsconfig.base.json
+└── package.json
 ```
+
+## ZENORA App (artifacts/zenora)
+
+- React + Vite + TypeScript, running on `PORT=3000 BASE_PATH=/`
+- Retro-neon GameFi landing page — "Own Your Childhood"
+- Page order (scrolling): Hero → GameSection (Alien Abduction iframe) → Game Catalog → Tokenomics → Roadmap → Footer
+- `game.html` is a fully self-contained arcade game in `public/` — served as a static file at `/game.html`
+- Styling: neon pink `#ff00aa`, `font-pixel` class, framer-motion animations, glass-morphism cards
+- Vite config: `allowedHosts: true`, `@assets` alias, reads `PORT` and `BASE_PATH` env vars
 
 ## TypeScript & Composite Projects
 

@@ -7,6 +7,7 @@ import { GameCard } from "@/components/GameCard";
 import { Footer } from "@/components/Footer";
 import { Roadmap } from "@/components/Roadmap";
 import { Tokenomics } from "@/components/Tokenomics";
+import { GameSection } from "@/components/GameSection";
 import { gamesData, allGames } from "@/data/games";
 
 export default function Home() {
@@ -22,6 +23,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black">
       <Hero />
+
+      <GameSection />
 
       <div
         id="catalog"
